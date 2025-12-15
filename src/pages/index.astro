@@ -3,48 +3,799 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const person = {
+	name: 'Ashutosh Lamsal',
+	tagline:
+		'Geospatial & hydrology researcher — remote sensing, GIS, and ML for floods & humanitarian response.',
+	location: 'Houston, TX',
+	email: 'your.email@example.com',
+	github: 'https://github.com/',
+	linkedin: 'https://www.linkedin.com/',
+};
+
+const highlights = [
+	{ k: 'Focus', v: 'Flood risk, inundation, exposure & damage assessment' },
+	{ k: 'Core stack', v: 'Python • GIS • Google Earth Engine • PyTorch • Raster/Vector pipelines' },
+	{ k: 'Strength', v: 'Reproducible workflows + clear, map-first communication' },
+];
+
+const skills = [
+	{
+		group: 'Remote Sensing',
+		items: ['Sentinel-1 SAR', 'Sentinel-2', 'Landsat', 'LiDAR/DEM', 'Surface-water mapping', 'Flood inundation & susceptibility'],
+	},
+	{
+		group: 'Geospatial',
+		items: ['QGIS / ArcGIS', 'GeoPandas', 'Rasterio', 'Shapely', 'Spatial joins', 'Vector/raster tiling'],
+	},
+	{
+		group: 'Machine Learning',
+		items: ['U-Net segmentation', 'SegFormer fine-tuning', 'Feature engineering', 'Model evaluation', 'Class imbalance handling'],
+	},
+	{
+		group: 'Hydrology',
+		items: ['Watershed delineation', 'Terrain derivatives', 'Runoff concepts', 'Risk indices & overlays'],
+	},
+	{
+		group: 'Delivery',
+		items: ['StoryMaps', 'GitHub Pages', 'Technical writing', 'Reproducible notebooks'],
+	},
+];
+
+const projects = [
+	{
+		title: 'HADAW: Humanitarian Aid & Damage Assessment Workflow',
+		desc: 'Reproducible pipeline to estimate affected population, damaged buildings, supply needs, and accessibility using global datasets + damage proxies.',
+		tags: ['Humanitarian', 'Raster', 'Routing', 'Damage Proxy Maps'],
+		links: [
+			{ label: 'Repo', href: person.github },
+			{ label: 'Contact', href: '#contact' },
+		],
+	},
+	{
+		title: 'Stormwater inlet detection from DEM',
+		desc: 'Binary segmentation of inlet locations using DEM tiles + ground-truth masks, with deep-learning models and careful evaluation.',
+		tags: ['Deep Learning', 'U-Net', 'DEM', 'Computer Vision'],
+		links: [{ label: 'Contact', href: '#contact' }],
+	},
+	{
+		title: 'Surface-water time series from SAR',
+		desc: 'Monthly/yearly surface-water extraction from SAR imagery with filtering + thresholding; area computation in Python and validation against in-situ records.',
+		tags: ['Remote Sensing', 'Sentinel-1', 'Time Series', 'Python'],
+		links: [{ label: 'Contact', href: '#contact' }],
+	},
+	{
+		title: 'Floodplain boundary change analysis (Houston)',
+		desc: 'Change analysis using historical DEM/BFE datasets; spatial metrics for width expansion and urban encroachment patterns.',
+		tags: ['Floodplain', 'GIS', 'Change Detection'],
+		links: [{ label: 'Contact', href: '#contact' }],
+	},
+];
+
+const experience = [
+	{
+		role: 'Graduate Research Assistant (NCALM)',
+		org: 'University of Houston',
+		when: '2024–Present',
+		bullets: [
+			'Geospatial analysis + automation for flood-related mapping and exposure metrics.',
+			'Built Python workflows for raster/vector processing and reproducible outputs.',
+		],
+	},
+	{
+		role: 'Part-time Lecturer (Surveying Engineering)',
+		org: 'Universal Engineering and Science College',
+		when: 'Nov 2023–Present',
+		bullets: ['Teaching surveying engineering concepts; mentoring students on applied GIS workflows.'],
+	},
+];
+
+const quickFacts = [
+	{ label: 'Primary tools', value: 'Python, QGIS/ArcGIS, GEE, PyTorch, Rasterio/GeoPandas' },
+	{ label: 'Research interests', value: 'Flood risk, hydrology, remote sensing, ML segmentation, humanitarian analytics' },
+	{ label: 'Preferred outputs', value: 'Maps, dashboards, StoryMaps, clean notebooks, reproducible repos' },
+];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" id="top">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<div class="hero-left">
+					<div class="badge">Open to collaborations • floods • remote sensing • ML</div>
+					<h1>{person.name}</h1>
+					<p class="tagline">{person.tagline}</p>
+					<p class="meta">
+						<span>{person.location}</span>
+						<span aria-hidden="true">•</span>
+						<a href={`mailto:${person.email}`}>{person.email}</a>
+					</p>
+					<div class="cta">
+						<a class="button" href="#projects">View projects</a>
+						<button class="button secondary" id="copyEmail" type="button" data-email={person.email}>
+							Copy email
+						</button>
+						<button class="button ghost" id="themeToggle" type="button" aria-pressed="false">
+							Toggle theme
+						</button>
+					</div>
+					<div class="mini-grid">
+						{highlights.map((h) => (
+							<div class="mini-card">
+								<div class="k">{h.k}</div>
+								<div class="v">{h.v}</div>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="hero-right">
+					<div class="profile-card">
+						<div class="avatar" aria-hidden="true">AL</div>
+						<h2 class="profile-title">Quick facts</h2>
+						<ul class="facts">
+							{quickFacts.map((f) => (
+								<li>
+									<strong>{f.label}:</strong> {f.value}
+								</li>
+							))}
+						</ul>
+						<div class="profile-links">
+							<a href={person.github} target="_blank" rel="noreferrer">GitHub</a>
+							<a href={person.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+							<a href="#contact">Contact</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="about" class="section">
+				<div class="section-head">
+					<h2>About</h2>
+					<p>
+						I build end-to-end geospatial workflows — from data extraction (GEE / open datasets) to mapping,
+						metrics, and ML models — with an emphasis on flood risk and rapid decision support.
+					</p>
+				</div>
+				<div class="cards">
+					<div class="card">
+						<h3>What I do</h3>
+						<ul>
+							<li>Remote sensing analysis (SAR/optical) for water and flood mapping</li>
+							<li>GIS automation (raster/vector) with clean, reproducible Python pipelines</li>
+							<li>Deep-learning segmentation for geospatial detection tasks (e.g., U-Net)</li>
+						</ul>
+					</div>
+					<div class="card">
+						<h3>How I work</h3>
+						<ul>
+							<li>Start with a map + metric that answers a concrete question</li>
+							<li>Keep data + code reproducible (configs, notebooks, scripts)</li>
+							<li>Communicate results clearly (figures, StoryMaps, short reports)</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="skills" class="section">
+				<div class="section-head">
+					<h2>Skills</h2>
+					<p>Click a group to filter. This is interactive and works without any external libraries.</p>
+				</div>
+
+				<div class="toolbar" aria-label="Skill filters">
+					<button class="pill is-active" data-skill-group="All" type="button">All</button>
+					{skills.map((g) => (
+						<button class="pill" data-skill-group={g.group} type="button">{g.group}</button>
+					))}
+				</div>
+
+				<div class="skill-groups">
+					{skills.map((g) => (
+						<div class="skill-group" data-group={g.group}>
+							<h3>{g.group}</h3>
+							<div class="chips">
+								{g.items.map((s) => (
+									<span class="chip" title={s}>{s}</span>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section id="projects" class="section">
+				<div class="section-head">
+					<h2>Projects</h2>
+					<p>
+						Filter by tag, then click a project card to expand details. (Tip: keep your work isolated with branches.)
+					</p>
+				</div>
+
+				<div class="toolbar" aria-label="Project filters">
+					<button class="pill is-active" data-project-tag="All" type="button">All</button>
+					{Array.from(new Set(projects.flatMap((p) => p.tags))).map((t) => (
+						<button class="pill" data-project-tag={t} type="button">{t}</button>
+					))}
+				</div>
+
+				<div class="project-grid">
+					{projects.map((p) => (
+						<details class="project" data-tags={p.tags.join('|')}>
+							<summary>
+								<h3>{p.title}</h3>
+								<p>{p.desc}</p>
+								<div class="tag-row">
+									{p.tags.map((t) => (
+										<span class="tag">{t}</span>
+									))}
+								</div>
+							</summary>
+							<div class="project-body">
+								<p>
+									Want this to point to your real repo/demo? Replace the placeholder links in
+									<code>src/pages/index.astro</code>.
+								</p>
+								<div class="link-row">
+									{p.links.map((l) => (
+										<a class="small" href={l.href} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+											{l.label}
+										</a>
+									))}
+								</div>
+							</div>
+						</details>
+					))}
+				</div>
+			</section>
+
+			<section id="experience" class="section">
+				<div class="section-head">
+					<h2>Experience</h2>
+					<p>Expandable timeline — clean and simple for a single-page portfolio.</p>
+				</div>
+				<div class="timeline">
+					{experience.map((e) => (
+						<details class="item">
+							<summary>
+								<div class="row">
+									<div>
+										<h3>{e.role}</h3>
+										<p class="muted">{e.org}</p>
+									</div>
+									<span class="when">{e.when}</span>
+								</div>
+							</summary>
+							<ul>
+								{e.bullets.map((b) => (
+									<li>{b}</li>
+								))}
+							</ul>
+						</details>
+					))}
+				</div>
+			</section>
+
+			<section id="contact" class="section">
+				<div class="section-head">
+					<h2>Contact</h2>
+					<p>
+						Fastest: email. You can also use this form (it opens your email client). Replace placeholders with your real links.
+					</p>
+				</div>
+
+				<div class="contact">
+					<form id="mailtoForm">
+						<label>
+							Your name
+							<input name="name" required />
+						</label>
+						<label>
+							Message
+							<textarea name="message" rows="5" required></textarea>
+						</label>
+						<button class="button" type="submit">Compose email</button>
+					</form>
+
+					<div class="card contact-card">
+						<h3>Links</h3>
+						<ul>
+							<li><a href={person.github} target="_blank" rel="noreferrer">GitHub</a></li>
+							<li><a href={person.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
+							<li><a href={`mailto:${person.email}`}>{person.email}</a></li>
+						</ul>
+						<p class="muted small">
+							Tip: if you’re collaborating with a friend, always <code>git pull</code> before you start editing.
+						</p>
+					</div>
+				</div>
+			</section>
 		</main>
 		<Footer />
+
+		<script type="module">
+			const EMAIL = /** @type {string} */ (${JSON.stringify(person.email)});
+			// --- theme toggle (stored in localStorage) ---
+			const root = document.documentElement;
+			const themeToggle = document.getElementById('themeToggle');
+			const saved = localStorage.getItem('theme');
+			if (saved === 'dark') root.classList.add('dark');
+			if (themeToggle) themeToggle.setAttribute('aria-pressed', String(root.classList.contains('dark')));
+			themeToggle?.addEventListener('click', () => {
+				root.classList.toggle('dark');
+				localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+				themeToggle.setAttribute('aria-pressed', String(root.classList.contains('dark')));
+			});
+
+			// --- copy email ---
+			const copyBtn = document.getElementById('copyEmail');
+			copyBtn?.addEventListener('click', async () => {
+				const email = copyBtn.getAttribute('data-email');
+				if (!email) return;
+				try {
+					await navigator.clipboard.writeText(email);
+					copyBtn.textContent = 'Copied!';
+					setTimeout(() => (copyBtn.textContent = 'Copy email'), 900);
+				} catch {
+					copyBtn.textContent = 'Copy failed';
+					setTimeout(() => (copyBtn.textContent = 'Copy email'), 900);
+				}
+			});
+
+			// --- skill group filtering ---
+			const skillButtons = Array.from(document.querySelectorAll('[data-skill-group]'));
+			const skillGroups = Array.from(document.querySelectorAll('.skill-group'));
+			skillButtons.forEach((btn) =>
+				btn.addEventListener('click', () => {
+					const group = btn.getAttribute('data-skill-group');
+					skillButtons.forEach((b) => b.classList.remove('is-active'));
+					btn.classList.add('is-active');
+					skillGroups.forEach((g) => {
+						const gName = g.getAttribute('data-group');
+						g.style.display = group === 'All' || group === gName ? '' : 'none';
+					});
+				})
+			);
+
+			// --- project tag filtering ---
+			const projectButtons = Array.from(document.querySelectorAll('[data-project-tag]'));
+			const projects = Array.from(document.querySelectorAll('.project'));
+			projectButtons.forEach((btn) =>
+				btn.addEventListener('click', () => {
+					const tag = btn.getAttribute('data-project-tag');
+					projectButtons.forEach((b) => b.classList.remove('is-active'));
+					btn.classList.add('is-active');
+					projects.forEach((p) => {
+						const tags = (p.getAttribute('data-tags') || '').split('|');
+						p.style.display = tag === 'All' || tags.includes(tag) ? '' : 'none';
+					});
+				})
+			);
+
+			// --- mailto form ---
+			const mailtoForm = document.getElementById('mailtoForm');
+			mailtoForm?.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const fd = new FormData(mailtoForm);
+				const name = String(fd.get('name') || '').trim();
+				const msg = String(fd.get('message') || '').trim();
+				const subject = encodeURIComponent(`Website message from ${name || 'someone'}`);
+				const body = encodeURIComponent(msg);
+				window.location.href = `mailto:${encodeURIComponent(EMAIL)}?subject=${subject}&body=${body}`;
+			});
+		</script>
 	</body>
 </html>
+
+<style>
+	:global(html) {
+		scroll-behavior: smooth;
+	}
+	:global(:root.dark) {
+		--accent: #7c9cff;
+		--accent-dark: #b6c6ff;
+		--gray-gradient: rgba(18, 20, 28, 60%), rgba(18, 20, 28, 90%);
+	}
+	:global(:root.dark body) {
+		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		color: rgba(255, 255, 255, 0.86);
+	}
+	:global(:root.dark header) {
+		background: rgba(18, 20, 28, 0.92);
+	}
+	:global(:root.dark nav a) {
+		color: rgba(255, 255, 255, 0.86);
+	}
+	:global(:root.dark .card),
+	:global(:root.dark .mini-card),
+	:global(:root.dark details.project),
+	:global(:root.dark .profile-card) {
+		background: rgba(255, 255, 255, 0.06);
+		border-color: rgba(255, 255, 255, 0.12);
+	}
+
+	.hero {
+		display: grid;
+		grid-template-columns: 1.25fr 0.75fr;
+		gap: 1.25rem;
+		align-items: start;
+		margin-top: 0.25rem;
+	}
+	@media (max-width: 900px) {
+		.hero {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.badge {
+		display: inline-flex;
+		gap: 0.5rem;
+		align-items: center;
+		font-size: 0.9rem;
+		padding: 0.35rem 0.7rem;
+		border-radius: 999px;
+		background: rgba(var(--gray-light), 70%);
+		border: 1px solid rgba(var(--gray), 18%);
+		width: fit-content;
+		margin-bottom: 0.9rem;
+	}
+
+	.tagline {
+		font-size: 1.1rem;
+		margin-top: 0.25rem;
+		max-width: 58ch;
+	}
+	.meta {
+		color: rgb(var(--gray));
+		font-size: 0.95rem;
+		display: flex;
+		gap: 0.6rem;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.meta a {
+		text-decoration: none;
+		border-bottom: 1px dashed rgba(var(--gray), 45%);
+	}
+
+	.cta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin: 1.1rem 0 1.1rem 0;
+	}
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.55rem 0.9rem;
+		border-radius: 0.8rem;
+		border: 1px solid rgba(var(--gray), 25%);
+		background: white;
+		color: rgb(var(--black));
+		text-decoration: none;
+		cursor: pointer;
+		box-shadow: 0 1px 0 rgba(var(--black), 6%);
+	}
+	.button:hover {
+		transform: translateY(-1px);
+	}
+	.button.secondary {
+		background: rgba(var(--gray-light), 65%);
+	}
+	.button.ghost {
+		background: transparent;
+	}
+	:global(:root.dark .button) {
+		background: rgba(255, 255, 255, 0.06);
+		color: rgba(255, 255, 255, 0.86);
+		border-color: rgba(255, 255, 255, 0.12);
+	}
+	:global(:root.dark .badge) {
+		background: rgba(255, 255, 255, 0.06);
+		border-color: rgba(255, 255, 255, 0.12);
+		color: rgba(255, 255, 255, 0.86);
+	}
+
+	.mini-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.7rem;
+		margin-top: 0.9rem;
+	}
+	.mini-card {
+		background: white;
+		border: 1px solid rgba(var(--gray), 18%);
+		border-radius: 1rem;
+		padding: 0.85rem;
+	}
+	.mini-card .k {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: rgb(var(--gray));
+		margin-bottom: 0.2rem;
+	}
+	.mini-card .v {
+		font-size: 0.98rem;
+	}
+
+	.profile-card {
+		background: white;
+		border: 1px solid rgba(var(--gray), 18%);
+		border-radius: 1.25rem;
+		padding: 1rem;
+		position: sticky;
+		top: 1rem;
+	}
+	.avatar {
+		display: grid;
+		place-items: center;
+		width: 72px;
+		height: 72px;
+		border-radius: 18px;
+		background: rgba(var(--gray-light), 70%);
+		border: 1px solid rgba(var(--gray), 18%);
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		margin-bottom: 0.8rem;
+	}
+	.profile-title {
+		font-size: 1.15rem;
+		margin: 0 0 0.5rem 0;
+	}
+	.facts {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 0.5rem;
+		font-size: 0.95rem;
+		color: rgb(var(--gray-dark));
+	}
+	:global(:root.dark .facts) {
+		color: rgba(255, 255, 255, 0.86);
+	}
+	.profile-links {
+		display: flex;
+		gap: 0.8rem;
+		margin-top: 0.9rem;
+		flex-wrap: wrap;
+	}
+	.profile-links a {
+		text-decoration: none;
+		border-bottom: 1px dashed rgba(var(--gray), 45%);
+	}
+
+	.section {
+		margin-top: 3.2rem;
+	}
+	.section-head {
+		margin-bottom: 1.2rem;
+	}
+	.section-head p {
+		max-width: 72ch;
+		margin: 0.5rem 0 0 0;
+		color: rgb(var(--gray));
+	}
+	:global(:root.dark .section-head p) {
+		color: rgba(255, 255, 255, 0.72);
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+	@media (max-width: 900px) {
+		.cards {
+			grid-template-columns: 1fr;
+		}
+	}
+	.card {
+		background: white;
+		border: 1px solid rgba(var(--gray), 18%);
+		border-radius: 1.25rem;
+		padding: 1rem;
+	}
+	.card ul {
+		margin: 0.6rem 0 0 0;
+	}
+
+	.toolbar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+	.pill {
+		border: 1px solid rgba(var(--gray), 22%);
+		background: white;
+		border-radius: 999px;
+		padding: 0.35rem 0.7rem;
+		font-size: 0.9rem;
+		cursor: pointer;
+	}
+	.pill.is-active {
+		border-color: var(--accent);
+		box-shadow: 0 0 0 3px rgba(35, 55, 255, 12%);
+	}
+	:global(:root.dark .pill) {
+		background: rgba(255, 255, 255, 0.06);
+		color: rgba(255, 255, 255, 0.86);
+		border-color: rgba(255, 255, 255, 0.12);
+	}
+
+	.skill-groups {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+	.skill-group {
+		background: white;
+		border: 1px solid rgba(var(--gray), 18%);
+		border-radius: 1.25rem;
+		padding: 1rem;
+	}
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.chip {
+		border: 1px solid rgba(var(--gray), 18%);
+		background: rgba(var(--gray-light), 55%);
+		border-radius: 999px;
+		padding: 0.2rem 0.55rem;
+		font-size: 0.9rem;
+	}
+	:global(:root.dark .chip) {
+		background: rgba(255, 255, 255, 0.06);
+		border-color: rgba(255, 255, 255, 0.12);
+		color: rgba(255, 255, 255, 0.86);
+	}
+
+	.project-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+	@media (max-width: 900px) {
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+	details.project {
+		background: white;
+		border: 1px solid rgba(var(--gray), 18%);
+		border-radius: 1.25rem;
+		padding: 0.2rem;
+		overflow: hidden;
+	}
+	details.project summary {
+		list-style: none;
+		cursor: pointer;
+		padding: 1rem;
+	}
+	details.project summary::-webkit-details-marker {
+		display: none;
+	}
+	.project p {
+		margin: 0.35rem 0 0 0;
+		color: rgb(var(--gray));
+		font-size: 0.98rem;
+	}
+	:global(:root.dark .project p) {
+		color: rgba(255, 255, 255, 0.72);
+	}
+	.tag-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin-top: 0.75rem;
+	}
+	.tag {
+		font-size: 0.85rem;
+		padding: 0.18rem 0.55rem;
+		border-radius: 999px;
+		border: 1px solid rgba(var(--gray), 18%);
+		background: rgba(var(--gray-light), 55%);
+	}
+	.project-body {
+		padding: 0 1rem 1rem 1rem;
+	}
+	.link-row {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		margin-top: 0.5rem;
+	}
+	a.small {
+		text-decoration: none;
+		border-bottom: 1px dashed rgba(var(--gray), 45%);
+	}
+
+	.timeline {
+		display: grid;
+		gap: 0.8rem;
+	}
+	.timeline .item {
+		background: white;
+		border: 1px solid rgba(var(--gray), 18%);
+		border-radius: 1.25rem;
+		padding: 0.2rem;
+	}
+	.timeline summary {
+		list-style: none;
+		cursor: pointer;
+		padding: 1rem;
+	}
+	.timeline summary::-webkit-details-marker {
+		display: none;
+	}
+	.row {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		align-items: baseline;
+	}
+	.muted {
+		margin: 0;
+		color: rgb(var(--gray));
+		font-size: 0.95rem;
+	}
+	.when {
+		color: rgb(var(--gray));
+		font-size: 0.95rem;
+		white-space: nowrap;
+	}
+	.small {
+		font-size: 0.9rem;
+	}
+
+	.contact {
+		display: grid;
+		grid-template-columns: 1fr 0.9fr;
+		gap: 1rem;
+		align-items: start;
+	}
+	@media (max-width: 900px) {
+		.contact {
+			grid-template-columns: 1fr;
+		}
+	}
+	form {
+		background: white;
+		border: 1px solid rgba(var(--gray), 18%);
+		border-radius: 1.25rem;
+		padding: 1rem;
+		display: grid;
+		gap: 0.75rem;
+	}
+	label {
+		display: grid;
+		gap: 0.35rem;
+		font-size: 0.95rem;
+	}
+	input,
+	textarea {
+		border-radius: 0.8rem;
+		border: 1px solid rgba(var(--gray), 22%);
+		padding: 0.65rem;
+		background: rgba(var(--gray-light), 35%);
+	}
+	:global(:root.dark input),
+	:global(:root.dark textarea) {
+		background: rgba(255, 255, 255, 0.06);
+		color: rgba(255, 255, 255, 0.86);
+		border-color: rgba(255, 255, 255, 0.12);
+	}
+	.contact-card ul {
+		margin: 0.6rem 0 0 0;
+	}
+</style>
